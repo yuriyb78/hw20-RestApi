@@ -1,0 +1,40 @@
+.gradle
+build/
+.idea
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/test/**/build/
+
+### IntelliJ IDEA ###
+*.iws
+*.iml
+*.ipr
+*.log
+out/
+!**/src/test/**/out/
+settings.gradle
+gradlew.bat
+src/main
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
