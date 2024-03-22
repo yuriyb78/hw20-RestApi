@@ -2,10 +2,12 @@ package tests;
 
 import io.restassured.response.Response;
 import models.LoginBodyModel;
+import models.LoginResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.requestSpecification;
 import static io.restassured.http.ContentType.JSON;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -78,21 +80,22 @@ public class FirstRestApiTest extends BaseTest {
         loginData.setEmail("eve.holt@reqres.in");
         loginData.setPassword("cityslicka");
 
-        Response response = given()
+        LoginResponseModel response = given()
                 .log().uri()
+                .log().headers()
                 .log().method()
                 .contentType(JSON)
-                .body(loginData)
                 .log().body()
+                .body(loginData)
                 .when()
                 .post("/login")
                 .then()
                 .log().status()
                 .log().body()
                 .statusCode(200)
-                .extract().response();
+                .extract().as(LoginResponseModel.class);
 
-        assertThat(response.path("token"), is(notNullValue()));
+        assertThat(response.getToken(), is(notNullValue()));
     }
 
     @Test

@@ -3,6 +3,7 @@ package models;
 public class LoginBodyModel {
 
     String email, password;
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -11,4 +12,11 @@ public class LoginBodyModel {
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }
