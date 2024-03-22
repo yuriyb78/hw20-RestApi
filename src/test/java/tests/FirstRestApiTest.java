@@ -1,4 +1,7 @@
+package tests;
+
 import io.restassured.response.Response;
+import models.LoginBodyModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +33,7 @@ public class FirstRestApiTest extends BaseTest {
         assertAll("Проверка полученных данных о списке польователей",
                 () -> assertThat(response.path("page"), is(1)),
                 () -> assertThat(response.path("total_pages"), is(2))
-        );        ;
+        );
     }
 
     @Test
@@ -70,12 +73,16 @@ public class FirstRestApiTest extends BaseTest {
     @Test
     @DisplayName("Проверка успешной авторизации")
     void successfulLoginTest () {
-        String responseBody = "{\"email\": \"eve.holt@reqres.in\", \"password\": \"cityslicka\"}";
+
+        LoginBodyModel loginData = new LoginBodyModel();
+        loginData.setEmail("eve.holt@reqres.in");
+        loginData.setPassword("cityslicka");
+
         Response response = given()
                 .log().uri()
                 .log().method()
                 .contentType(JSON)
-                .body(responseBody)
+                .body(loginData)
                 .log().body()
                 .when()
                 .post("/login")
