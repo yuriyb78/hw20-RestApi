@@ -57,20 +57,19 @@ public class FirstRestApiTest extends BaseTest {
     @Test
     @DisplayName("Проверка получения ошибки 404")
     void checkErrorIfUserNotFound() {
-        Response response = given()
+        given()
                 .log().uri()
                 .log().method()
                 .when()
                 .get("/users/20")
                 .then()
                 .log().status()
-                .statusCode(404)
-                .extract().response();
+                .statusCode(404);
     }
 
     @Test
     @DisplayName("Проверка успешной авторизации")
-    void succesfulLoginTest () {
+    void successfulLoginTest () {
         String responseBody = "{\"email\": \"eve.holt@reqres.in\", \"password\": \"cityslicka\"}";
         Response response = given()
                 .log().uri()
@@ -91,7 +90,7 @@ public class FirstRestApiTest extends BaseTest {
 
     @Test
     @DisplayName("Проверка не успешной авторизации")
-    void faledLoginTest () {
+    void failedLoginTest () {
         String responseBody = "{\"email\": \"eve@reqres.in\", \"password\": \"cityslicka\"}";
         Response response = given()
                 .log().uri()
