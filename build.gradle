@@ -3,7 +3,7 @@ plugins {
     id 'io.qameta.allure' version '2.11.2'
 }
 
-group = 'ru.kranoe'
+group = 'ru.krasnoe'
 version = '1.0-SNAPSHOT'
 
 allure {
@@ -33,7 +33,7 @@ repositories {
 
 dependencies {
     testImplementation ('org.junit.jupiter:junit-jupiter:5.10.1',
-            'io.qameta.allure:allure-rest-assured:2.21.0',
+            'io.qameta.allure:allure-rest-assured:2.25.0',
             'io.rest-assured:rest-assured:5.4.0',
             'io.rest-assured:json-schema-validator:5.4.0',
             'org.slf4j:slf4j-simple:2.0.12'
