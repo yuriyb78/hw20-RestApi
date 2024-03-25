@@ -45,10 +45,14 @@ public class ReqresLoginRestApiTest extends BaseTest {
     @Feature("Тесты для авторизации на сайте https://reqres.in/")
     @DisplayName("Проверка не успешной авторизации")
     void failedLoginTest () {
-        String responseBody = "{\"email\": \"eve@reqres.in\", \"password\": \"cityslicka\"}";
+
+        LoginBodyModel loginData = new LoginBodyModel();
+        loginData.setEmail("eve@reqres.in");
+        loginData.setPassword("cityslicka");
+
         Response response = step("Отправка запроса на авторизацию", () ->
                 given(requestSpec)
-                .body(responseBody)
+                .body(loginData)
                 .when()
                 .post("/login")
                 .then()
